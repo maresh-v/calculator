@@ -1,0 +1,415 @@
+@use '../abstracts' as abs;
+@use '../base';
+
+.calculator{
+    width: 540px;
+    min-height: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @include abs.sm{
+        width: 90vw;
+        height: fit-content;
+        min-width: 220px;
+    }
+
+    &__header{
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+
+        h1{
+            margin-top: auto;
+            padding-bottom: 0;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 2.2em;
+            line-height: 1;
+
+            &.theme-1{ 
+                color: abs.$thm1-white
+            }
+            &.theme-2{ 
+                color: abs.$thm2-text-col;
+            } 
+            &.theme-3{
+                color: abs.$thm3-text-col;
+            }
+        }
+    }
+
+    &__theme-area{
+        width: 140px;
+        height: 50px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+            "theme descriptions"
+            "theme buttons";
+        row-gap: 3px;
+
+        h3{
+            grid-area: theme;
+            margin: auto 0 2.5% 10%;
+            font-family: 'League Spartan', sans-serif;
+            font-size: .8125em;
+            letter-spacing: 1px;
+
+            &.theme-1{ 
+                color: abs.$thm1-white
+            }
+            &.theme-2{ 
+                color: abs.$thm2-text-col;
+            } 
+            &.theme-3{
+                color: abs.$thm3-text-col;
+            }
+        }
+    }
+
+    &__theme-description{
+        grid-area: descriptions;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        user-select: none;
+
+        p{
+            padding: 0;
+            font-family: 'League Spartan', sans-serif;
+            color: white;
+        }
+    }
+
+    &__theme-switch{
+        grid-area: buttons;
+        height: 100%;
+        border-radius: 100vmax;
+        position: relative;
+        cursor: pointer;
+
+        &.theme-1{ 
+            background-color: abs.$thm1-keypad-bcg;
+        }
+        &.theme-2{ 
+            background-color: abs.$thm2-keypad-bcg; 
+        } 
+        &.theme-3{
+            background-color: abs.$thm3-keypad-bcg; 
+        }
+    }
+
+    &__theme-switch-dot{
+        width: 22%;
+        aspect-ratio: 1 / 1;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        border-radius: 100vmax;
+        transition: .2s all;
+
+        &.theme-1{ 
+            left: 8%;
+            background-color: abs.$thm1-key-eval-bcg;
+        }
+
+        &.theme-2{ 
+            left: 35%;
+            background-color: abs.$thm2-key-eval-bcg;
+        }
+
+        &.theme-3{ 
+            left: 70%;
+            background-color: abs.$thm3-key-eval-bcg;
+        }        
+    }
+
+    &__input{
+        width: 100%;
+        height: 128px;
+        margin-bottom: 25px;
+        padding: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        font-family: 'League Spartan', sans-serif;
+        font-size: 3.5em;
+        font-weight: 700;
+        text-align: right;
+        line-height: 1.1; //u
+        border: none;
+        border-radius: 10px;
+        caret-color: transparent;
+
+        &.theme-1{ 
+            background-color: abs.$thm1-screen-bcg;
+            color: abs.$thm1-white;
+        }
+        &.theme-2{ 
+            background-color: abs.$thm2-screen-bcg; 
+            color: abs.$thm2-text-col;
+        } 
+        &.theme-3{
+            background-color: abs.$thm3-screen-bcg; 
+            color: abs.$thm3-text-col;
+        }
+
+        &:focus{
+            outline: none;
+        }
+
+        @include abs.sm{
+            height: 90px;
+            padding: 5px 15px 0 15px;
+            font-size: 2.8em;
+        }
+
+        &::before{
+            width: 35px;
+            height: 100%;
+            content: "";
+            display: block;
+            position: absolute;
+            background-color: inherit;
+            left: 0;
+
+            @include abs.sm{
+                width: 15px;
+            }
+        }
+    }
+
+    &__button-area{
+        width: 100%;
+        padding: 35px;
+        display: grid;
+        grid-template-areas: 
+            "no-7 no-8 no-9 delete"
+            "no-4 no-5 no-6 plus"
+            "no-1 no-2 no-3 minus"
+            "dot no-0 divide multiply"
+            "reset reset calculate calculate";
+        grid-template-columns: repeat(4, 21%);
+        column-gap: 25px;
+        row-gap: 25px;
+        box-sizing: border-box;
+        border-radius: 10px;
+
+        &.theme-1{ background-color: abs.$thm1-keypad-bcg; }
+        &.theme-2{ background-color: abs.$thm2-keypad-bcg; } 
+        &.theme-3{ background-color: abs.$thm3-keypad-bcg; } 
+
+        @include abs.sm{
+            height: 105vw;
+            grid-template-columns: repeat(4, 21.25%);
+            max-width: 90vw;
+            min-width: 220px;
+            min-height: 340px;
+            padding: max(6.5vw, 20px);
+            column-gap: max(3.8vw, 10px);
+            row-gap: max(3.8vw, 10px);
+        }
+    }
+
+    &__button{
+        padding-top: 5px;
+        font-family: 'League Spartan', sans-serif;
+        font-size: 2.3em;
+        font-weight: 700;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+
+        line-height: 1;
+        padding: 14px 0 9px 0;
+
+        &.theme-1{ 
+            background-color: abs.$thm1-key-basic; 
+            color: abs.$thm1-text-col;
+            @include abs.keyBoxShadow(abs.$thm1-key-basic-shadow);
+
+            &:active{
+                background-color: abs.$thm1-white;
+            }
+
+            @media (hover: hover){
+                &:hover{
+                    background-color: abs.$thm1-white;
+                }
+            }
+        }
+        &.theme-2{ 
+            background-color: abs.$thm2-key-basic; 
+            color: abs.$thm2-text-col;
+            @include abs.keyBoxShadow(abs.$thm2-key-basic-shadow);
+
+            &:active{
+                background-color: abs.$thm2-white;
+            }
+
+            @media (hover: hover){
+                &:hover{
+                    background-color: abs.$thm2-white;
+                }
+            }
+        } 
+        &.theme-3{
+            background-color: abs.$thm3-key-basic;
+            color: abs.$thm3-text-col;
+            @include abs.keyBoxShadow(abs.$thm3-key-basic-shadow);
+
+            &:active{
+                background-color: abs.$thm3-key-basic-hover;
+            } 
+
+            @media (hover: hover){
+                &:hover{
+                    background-color: abs.$thm3-key-basic-hover;
+                } 
+            }
+        }
+
+        @include abs.sm{
+            border-radius: 5px;
+            font-size: 1.8em;
+        }
+
+        &--delete,
+        &--reset{
+            &.theme-1{ 
+                background-color: abs.$thm1-key-special-bcg;
+                color: abs.$thm1-white;
+                @include abs.keyBoxShadow(abs.$thm1-key-special-shadow);
+
+                &:active{
+                    background-color: abs.$thm1-key-special-bcg-hover;
+                }
+    
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm1-key-special-bcg-hover;
+                    }
+                }
+            }
+            &.theme-2{ 
+                background-color: abs.$thm2-key-special-bcg;
+                color: abs.$thm2-white;
+                @include abs.keyBoxShadow(abs.$thm2-key-special-shadow);
+
+                &:active{
+                    background-color: abs.$thm2-key-special-bcg-hover;
+                }
+    
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm2-key-special-bcg-hover;
+                    }
+                }
+            } 
+            &.theme-3{
+                background-color: abs.$thm3-key-special-bcg;
+                color: abs.$thm3-white;
+                @include abs.keyBoxShadow(abs.$thm3-key-special-shadow);
+
+                &:active{
+                    background-color: abs.$thm3-key-special-bcg-hover;
+                } 
+    
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm3-key-special-bcg-hover;
+                    } 
+                }
+            }
+
+            @include abs.sm{
+                border-radius: 5px;
+                font-size: 1.2em;
+            }
+        }
+
+        &--calculate{
+            &.theme-1{ 
+                background-color: abs.$thm1-key-eval-bcg;
+                color: abs.$thm1-white;
+                @include abs.keyBoxShadow(abs.$thm1-key-eval-shadow);
+
+                &:active{
+                    background-color: abs.$thm1-key-eval-bcg-hover;
+                }
+
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm1-key-eval-bcg-hover;
+                    }
+                }
+    
+            }
+            &.theme-2{ 
+                background-color: abs.$thm2-key-eval-bcg;
+                color: abs.$thm2-white;
+                @include abs.keyBoxShadow(abs.$thm2-key-eval-shadow);
+
+                &:active{
+                    background-color: abs.$thm2-key-eval-bcg-hover;
+                }
+    
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm2-key-eval-bcg-hover;
+                    }
+                }
+    
+            } 
+            &.theme-3{
+                background-color: abs.$thm3-key-eval-bcg;
+                color: abs.$thm3-text-col-sec;
+                @include abs.keyBoxShadow(abs.$thm3-key-eval-shadow);
+    
+                &:active{
+                    background-color: abs.$thm3-key-eval-bcg-hover;
+                }
+
+                @media (hover: hover){
+                    &:hover{
+                        background-color: abs.$thm3-key-eval-bcg-hover;
+                    }
+                }
+            }
+
+            @include abs.sm{
+                border-radius: 5px;
+                font-size: 1.2em;
+            }
+        }
+
+        //grid areas
+        &--no-1{grid-area: no-1;}
+        &--no-2{grid-area: no-2;}        
+        &--no-3{grid-area: no-3;}
+        &--no-4{grid-area: no-4;}
+        &--no-5{grid-area: no-5;}
+        &--no-6{grid-area: no-6;}
+        &--no-7{grid-area: no-7;}
+        &--no-8{grid-area: no-8;}
+        &--no-9{grid-area: no-9;}
+        &--no-0{grid-area: no-0;}
+        &--dot{grid-area: dot;}
+        &--plus{grid-area: plus;}
+        &--minus{grid-area: minus;}
+        &--multiply{grid-area: multiply;}
+        &--divide{grid-area: divide;}
+        &--delete{grid-area: delete;}
+        &--reset{grid-area: reset;}
+        &--calculate{grid-area: calculate;}
+    }
+}
+
+

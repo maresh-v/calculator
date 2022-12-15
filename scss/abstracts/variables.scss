@@ -1,0 +1,75 @@
+/*********************************************** THEME 1 – DARK / DEFAULT ***********************************************/
+
+/******** BACKGROUNDS ********/
+
+$thm1-main-bcg: hsl(222, 26%, 31%); // main background
+$thm1-keypad-bcg: hsl(223, 31%, 20%); // toggle background, keypad background
+$thm1-screen-bcg: hsl(224, 36%, 15%); // screen background
+
+/*********** KEYS ***********/
+
+$thm1-key-special-bcg: hsl(225, 21%, 49%); // reset + delete key background
+$thm1-key-special-bcg-hover: hsl(225, 51%, 76%); // reset + delete key background [HOVER]
+$thm1-key-special-shadow: hsl(224, 28%, 35%); // reset + delete key background, toggle
+$thm1-key-eval-bcg: hsl(6, 63%, 50%); // calculate key background
+$thm1-key-eval-bcg-hover: hsl(6, 93%, 67%); // calculate key background [HOVER]
+$thm1-key-eval-shadow: hsl(6, 70%, 34%); // calculate key shadow
+$thm1-key-basic:hsl(30, 25%, 89%); // basic key background
+$thm1-key-basic-shadow:hsl(28, 16%, 65%); // basic key shadow
+
+/*********** TEXT ***********/
+
+$thm1-text-col: hsl(221, 14%, 31%); // primary text color
+$thm1-white: hsl(0, 0, 100%); // white text color
+
+
+/*********************************************** THEME 2 – LIGHT ***********************************************/
+
+/******** BACKGROUNDS ********/
+
+$thm2-main-bcg: hsl(0, 0%, 90%); // main background
+$thm2-keypad-bcg: hsl(0, 5%, 81%); // toggle background, keypad background
+$thm2-screen-bcg: hsl(0, 0%, 93%); // screen background
+
+/*********** KEYS ***********/
+
+$thm2-key-special-bcg: hsl(185, 42%, 37%); // reset + delete key background
+$thm2-key-special-bcg-hover: hsl(185, 41%, 56%); // reset + delete key background [HOVER]
+$thm2-key-special-shadow: hsl(185, 58%, 25%); // reset + delete key background, toggle
+$thm2-key-eval-bcg: hsl(25, 98%, 40%); // calculate key background
+$thm2-key-eval-bcg-hover: hsl(25, 100%, 61%); // calculate key background
+$thm2-key-eval-shadow: hsl(25, 99%, 27%); // calculate key shadow
+$thm2-key-basic: hsl(45, 7%, 89%); // basic key background
+$thm2-key-basic-shadow: hsl(35, 11%, 61%); // basic key shadow
+
+/*********** TEXT ***********/
+
+$thm2-text-col: hsl(60, 10%, 19%); // primary text color
+$thm2-white: hsl(0, 0, 100%); // white text color
+
+
+/*********************************************** THEME 3 – NEON ***********************************************/
+
+/******** BACKGROUNDS ********/
+
+$thm3-main-bcg: hsl(268, 75%, 9%); // main background
+$thm3-keypad-bcg: hsl(268, 71%, 12%); // toggle background, keypad background
+$thm3-screen-bcg: hsl(268, 71%, 12%); // screen background
+
+/*********** KEYS ***********/
+
+$thm3-key-special-bcg: hsl(281, 89%, 26%); // reset + delete key background
+$thm3-key-special-bcg-hover: hsl(281, 56%, 44%); // reset + delete key background
+$thm3-key-special-shadow: hsl(285, 91%, 52%); // reset + delete key background, toggle
+$thm3-key-eval-bcg: hsl(176, 100%, 44%); // calculate key background
+$thm3-key-eval-bcg-hover: hsl(176, 100%, 76%); // calculate key background
+$thm3-key-eval-shadow: hsl(177, 92%, 70%); // calculate key shadow
+$thm3-key-basic: hsl(268, 47%, 21%); // basic key background
+$thm3-key-basic-shadow: hsl(290, 70%, 36%); // basic key shadow
+$thm3-key-basic-hover: hsl(268, 47%, 43%); // basic key background on hover
+
+/*********** TEXT ***********/
+
+$thm3-text-col: hsl(52, 100%, 62%); // primary text color
+$thm3-text-col-sec: hsl(198, 20%, 13%); // secondary text color
+$thm3-white: hsl(0, 0, 100%); // white text color

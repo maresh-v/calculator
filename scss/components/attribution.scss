@@ -1,0 +1,40 @@
+@use '../abstracts' as abs;
+
+.attribution{
+    margin-top: 150px;
+    margin-bottom: 20px;
+    font-family: League Spartan, sans-serif;
+    font-weight: 400;
+    text-align: center;
+
+    &.theme-1{
+        color: abs.$thm1-white;
+
+        & > a{
+            color: abs.$thm1-white;
+        }
+    }
+
+    &.theme-2{
+        color: abs.$thm2-text-col;
+
+        & > a{
+            color: abs.$thm2-text-col;
+        }
+    }
+
+    &.theme-3{
+        color: abs.$thm3-text-col;
+
+        & > a{
+            color: abs.$thm3-text-col;
+        }
+    }
+
+    @include abs.sm{
+        margin-top: max(10vw, 30px);
+        margin-bottom: max(5vw, 15px);
+        font-size: max(4vw, .75rem);
+        white-space: nowrap;
+    }
+}

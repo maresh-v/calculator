@@ -1,0 +1,13 @@
+//brakepoint na 900 px
+    // začíná se rozbíjet navigace + home už vypadá zvláštně
+    // navigaci už přemístit do tlačítka + font na Home zmenšit a nabindovat na vw
+
+$breakpoints: (
+    "sm": 580px,
+);
+
+@mixin sm() {
+    @media (max-width: map-get($breakpoints, "sm")){
+        @content;
+    }
+}

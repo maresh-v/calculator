@@ -1,0 +1,24 @@
+//abstracts
+@use '../abstracts' as abs;
+
+.main-page{
+    height: fit-content;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include abs.sm{
+        align-items: flex-start;
+    }
+
+    &.theme-1{ 
+        background-color: abs.$thm1-main-bcg;
+    }
+    &.theme-2{ 
+        background-color: abs.$thm2-main-bcg;
+    } 
+    &.theme-3{
+        background-color: abs.$thm3-main-bcg;
+    }
+}
