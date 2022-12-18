@@ -27,7 +27,6 @@ class Calculator {
         while(
             this.calcInput.innerHTML.slice(0, 1) == "0" 
             || this.calcInput.innerHTML.slice(0, 1) == "/" 
-            || this.calcInput.innerHTML.slice(0, 1) == "×" 
             || this.calcInput.innerHTML.slice(0, 1) == "*")
             {
             this.calcInput.innerHTML = this.calcInput.innerHTML.slice(1);
