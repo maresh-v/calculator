@@ -16,27 +16,32 @@ class Calculator {
     }
 
     delete = () => {
-        //this.calcInput.value = this.calcInput.value.slice(0, -1);
         this.calcInput.innerHTML = this.calcInput.innerHTML.slice(0, -1);
     }
-5664
+
     reset = () => {
-        //this.calcInput.value = "";
         this.calcInput.innerHTML = "";
     }
 
-    calculate = () => {
-        //this.calcInput.value = eval(this.calcInput.value.replace(/×/g, "*"));
-        while(this.calcInput.innerHTML.slice(0, 1) == "0"){
+    calculate = () => {  
+        while(
+            this.calcInput.innerHTML.slice(0, 1) == "0" 
+            || this.calcInput.innerHTML.slice(0, 1) == "/" 
+            || this.calcInput.innerHTML.slice(0, 1) == "×" 
+            || this.calcInput.innerHTML.slice(0, 1) == "*")
+            {
             this.calcInput.innerHTML = this.calcInput.innerHTML.slice(1);
         }
-        this.calcInput.innerHTML = eval(this.calcInput.innerHTML.replace(/×/g, "*"));
+        if(this.calcInput.innerHTML != 0){
+            this.calcInput.innerHTML = eval(this.calcInput.innerHTML.replace(/×/g, "*"));
+        }else{
+            this.calcInput.innerHTML = "0";
+        }
     }
 
     typeIn(){
         this.charButtons.forEach(el => {
             el.addEventListener('click', () => {
-                //this.calcInput.value += el.textContent;
                 this.calcInput.innerHTML += el.textContent;
             });
         })
@@ -47,7 +52,7 @@ class Calculator {
 
         this.charButtons.forEach(el => {
             let char = el.textContent;
-            charList.push(char);664
+            charList.push(char);
 
             if(el.getAttribute("data-alt-char") !== null){
                 charList.push(el.getAttribute("data-alt-char"));
